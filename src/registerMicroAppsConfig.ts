@@ -5,10 +5,17 @@ const loader = (loading: boolean) => {
 
 export const Microconfig = [
   {
-    name: "react",
+    name: "notes-service",
     entry: "http://localhost:8000",
     container: "#subContainer",
-    activeRule: "/react",
+    activeRule: "/notes",
     loader,
   },
+  // {
+  //   name: "about-me-service",
+  //   entry: "http://localhost:8001",
+  //   container: "#subContainer",
+  //   activeRule: "/aboutMe",
+  //   loader,
+  // },
 ];

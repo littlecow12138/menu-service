@@ -3,9 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { addGlobalUncaughtErrorHandler, registerMicroApps } from "qiankun";
+import {
+  addGlobalUncaughtErrorHandler,
+  registerMicroApps,
+  setDefaultMountApp,
+  start,
+} from "qiankun";
 import { Microconfig } from "./registerMicroAppsConfig";
-import { start } from "repl";
+import "antd/dist/antd.min.css";
 
 // register micro app
 registerMicroApps(Microconfig, {
@@ -27,8 +32,10 @@ addGlobalUncaughtErrorHandler((handler) => {
   console.log("异常捕获", handler);
 });
 
+setDefaultMountApp("/notes");
+
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById("root-main") as HTMLElement
 );
 root.render(
   <React.StrictMode>

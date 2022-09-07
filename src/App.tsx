@@ -1,26 +1,95 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { Menu, MenuProps } from "antd";
+import sleepyPig from "./assets/sleeping-piggy.gif";
+import noteIcon from "./assets/note-icon.gif";
+import aboutMeIcon from "./assets/aboutMe.gif";
 
-function App() {
+const items: MenuProps["items"] = [
+  {
+    label: "文档",
+    key: "notes",
+    icon: <img src={noteIcon} alt="note" style={{ width: "42px" }} />,
+  },
+  {
+    label: "关于我",
+    key: "aboutMe",
+    icon: <img src={aboutMeIcon} alt="note" style={{ width: "32px" }} />,
+    disabled: false,
+  },
+  // {
+  //   label: "Navigation Three - Submenu",
+  //   key: "SubMenu",
+  //   icon: <SettingOutlined />,
+  //   children: [
+  //     {
+  //       type: "group",
+  //       label: "Item 1",
+  //       children: [
+  //         {
+  //           label: "Option 1",
+  //           key: "setting:1",
+  //         },
+  //         {
+  //           label: "Option 2",
+  //           key: "setting:2",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       type: "group",
+  //       label: "Item 2",
+  //       children: [
+  //         {
+  //           label: "Option 3",
+  //           key: "setting:3",
+  //         },
+  //         {
+  //           label: "Option 4",
+  //           key: "setting:4",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: (
+  //     <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+  //       Navigation Four - Link
+  //     </a>
+  //   ),
+  //   key: "alipay",
+  // },
+];
+
+const App: React.FC = () => {
+  const [current, setCurrent] = useState("notes");
+
+  const onClick: MenuProps["onClick"] = (e) => {
+    console.log("click ", e);
+    setCurrent(e.key);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="menu-wrapper">
+        <div className="icon-container">
+          <img src={sleepyPig} alt="icon" />
+          <span>Jingshuang Sun</span>
+          <div className="divide" />
+        </div>
+        <div className="menu-container">
+          <Menu
+            onClick={onClick}
+            selectedKeys={[current]}
+            mode="horizontal"
+            items={items}
+          />
+        </div>
+      </div>
+      <div className="content" id="subContainer" />
+    </>
   );
-}
+};
 
 export default App;
