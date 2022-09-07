@@ -7,7 +7,7 @@ import aboutMeIcon from "./assets/aboutMe.gif";
 
 const items: MenuProps["items"] = [
   {
-    label: "文档",
+    label: "笔记",
     key: "notes",
     icon: <img src={noteIcon} alt="note" style={{ width: "42px" }} />,
   },
@@ -84,6 +84,7 @@ const App: React.FC = () => {
             selectedKeys={[current]}
             mode="horizontal"
             items={items}
+            style={{ background: "#fcfcfa" }}
           />
         </div>
       </div>
